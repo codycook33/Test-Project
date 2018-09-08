@@ -7,20 +7,27 @@ public class Movement : MonoBehaviour {
 	public float jumpPower;
 	public Rigidbody rb;
 	private bool isGrounded;
-
+	private float horizontal;
+	private float vertical;
+	
 	
 	
 	// Use this for initialization
 	void Start () {
 		speed = 8;
 		jumpPower = 10;
-		rb = GetComponent<Rigidbody>();
+		rb = GetComponent<Rigidbody>();	
+		
+		//vertical = Input.GetAxis("Vertical");
+        //horizontal = Input.GetAxis("Horizontal");
 	}
 	
-	// Update is called once per frame
+	
 	void FixedUpdate()
 	{
-		//transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, Input.GetAxis("Jump") * jumpPower * Time.deltaTime, Input.GetAxis("Vertical") * speed * Time.deltaTime);
+	
+
+		//rb.velocity = new Vector3(vertical, 0f, horizontal);
 
 		if (isGrounded)
 		{
@@ -28,6 +35,7 @@ public class Movement : MonoBehaviour {
 			{
 				rb.velocity = new Vector3(0f, jumpPower, 0f);
 			}
+			
 		}
 	}
 
